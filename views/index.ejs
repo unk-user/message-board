@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatter</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#232323] flex flex-col">
+    <h1 class="text-4xl font-bold mb-4">Chatter</h1>
+    <main class="mx-24 max-md:mx-8 flex flex-col flex-grow">
+      <section class="flex flex-col-reverse gap-3 flex-grow overflow-y-scroll px-1">
+        <% messages.forEach(message => { %>
+        <div
+          class="bg-[#111111] rounded-xl text-[#909090] rounded-tl-none px-2 pb-4 pt-1"
+        >
+          <h1 class="text-xl -mb-1 text-[#4A9A94]"><%= message.user%></h1>
+          <p class="text-sm mb-1"><%= message.added %></p>
+          <p class="text-[16px]"><%= message.text %></p>
+        </div>
+        <% })%>
+      </section>
+      <form action="/" method="POST" class="py-2 mt-auto h-fit text-end w-full">
+        <div class="flex flex-col gap-2">
+          <input
+            type="text"
+            id="user"
+            name="user"
+            class="rounded-md text-[#b1b1b1] text-lg px-2 py-1 bg-[#343434] focus:outline-none"
+            required
+          />
+          <textarea
+            type="text"
+            id="text"
+            name="text"
+            class="resize-none text-[#b1b1b1] text-lg rounded-md px-2 py-1 bg-[#343434] focus:outline-none"
+            maxlength="150"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="p-2 px-4 rounded-lg bg-[#6d928f] hover:bg-[#4A9A94] mt-2"
+        >
+          Post
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
